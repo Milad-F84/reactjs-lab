@@ -1,0 +1,93 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.header{
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 91.666667%;
+  padding: 20px;
+  box-shadow: 2px 4px 6px #bab6b6;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.banner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 91.666667%;
+}
+
+.bannerImg{
+  width: 100%;
+  max-width: 800px;
+  min-width: 300px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 40px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.cards{
+  width: 100%;
+}
+
+.cardImg{
+  width: 200px;
+  object-fit: contain;
+  height: 270px;
+}
+
+.cardDesc{
+  color: #918E9B;
+  margin-left: 1px;
+}
+
+.cardPrice{
+  font-weight: bold;
+}
+
+.status{
+  position: absolute;
+  background-color: white;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+.cardTitle{
+  font-weight: normal;
+  margin-top: 6px;
+}
