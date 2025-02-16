@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div>
       {cards.map((card) => {
-        const [id, title, price, category, description, image] = card;
+        const {id, title, price, category, description, image} = card;
         return (
           <Card
             key={id}
