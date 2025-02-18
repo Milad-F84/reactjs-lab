@@ -10,7 +10,7 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-8 md:grid md:gap-6 md:grid-cols-4">
       {cards.map((card) => {
         const {id, title, price, category, description, image} = card;
         return (
