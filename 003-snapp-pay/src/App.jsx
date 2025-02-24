@@ -1,4 +1,4 @@
-import { BrowserRouter, Routs, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contact from "./pages/Contact";
 import MainPage from "./pages/MainPage";
 
@@ -6,10 +6,10 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <Routs>
+        <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/contact" element={<Contact />} />
-        </Routs>
+        </Routes>
       </BrowserRouter>
     </>
   );
