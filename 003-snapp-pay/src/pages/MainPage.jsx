@@ -22,7 +22,8 @@ export default function MainPage() {
 
   function handleSearchChange(evt) {
     setSearchResult(
-      users.filter((item) => {
+      users.filter(
+        (item) =>
         item.name?.first
           ?.toLowerCase()
           .includes(inputRef.current.value.toLowerCase()) ||
@@ -32,8 +33,8 @@ export default function MainPage() {
           item.name?.title
             ?.toLowerCase()
             .includes(inputRef.current.value.toLowerCase()) ||
-          item.cell?.includes(inputRef.current.value);
-      })
+          item.cell?.includes(inputRef.current.value)
+      )
     );
   }
 
@@ -47,7 +48,7 @@ export default function MainPage() {
         onChange={handleSearchChange}
       />
 
-      <div>
+      <div className="grid grid-cols-5">
         {searchResult.length > 0
           ? searchResult.map((user) => (
               <UserCard
