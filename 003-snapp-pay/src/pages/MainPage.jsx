@@ -4,6 +4,7 @@ import UserCard from "../components/UserCard";
 export default function MainPage() {
   const [users, setUsers] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
+  // const [recentUser, setRecentUser] = useState([]);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -24,9 +25,9 @@ export default function MainPage() {
     setSearchResult(
       users.filter(
         (item) =>
-        item.name?.first
-          ?.toLowerCase()
-          .includes(inputRef.current.value.toLowerCase()) ||
+          item.name?.first
+            ?.toLowerCase()
+            .includes(inputRef.current.value.toLowerCase()) ||
           item.name?.last
             ?.toLowerCase()
             .includes(inputRef.current.value.toLowerCase()) ||
@@ -38,6 +39,13 @@ export default function MainPage() {
     );
   }
 
+  // function handleAddToRecent(user) {
+  //   const recentUsers = JSON.parse(localStorage.getItem("recentUsers")) || [];
+  //   const filtered = recentUsers.filter((u) => u.cell !== user.cell);
+  //   const updatedList = [user, ...filtered].slice(0, 4);
+  //   localStorage.setItem("recentUsers", JSON.stringify(updatedList));
+  // }
+
   return (
     <>
       <input
@@ -48,6 +56,23 @@ export default function MainPage() {
         onChange={handleSearchChange}
       />
 
+      {/* <h2>مخاطبین پرتکرار</h2>
+      <div>
+        {recentUser.length > 0 ? (
+          recentUser.map((user) => (
+            <UserCard
+              key={`${user.id.value ?? "hi"}-${user.cell}`}
+              userName={user.name}
+              imagesObj={user.picture}
+              cell={user.cell}
+              onclick={() => handleAddToRecent(user)}
+            />
+          ))
+        ) : (
+          <p>هیچ مخاطبی مشاهده نشده است.</p>
+        )}
+      </div> */}
+
       <div className="grid grid-cols-5">
         {searchResult.length > 0
           ? searchResult.map((user) => (
@@ -56,6 +81,7 @@ export default function MainPage() {
                 userName={user.name}
                 imagesObj={user.picture}
                 cell={user.cell}
+                onclick = {() => handleAddToRecent(user)}
               />
             ))
           : users.map((user) => (
@@ -64,6 +90,7 @@ export default function MainPage() {
                 userName={user.name}
                 imagesObj={user.picture}
                 cell={user.cell}
+                onclick = {() => handleAddToRecent(user)}
               />
             ))}
       </div>

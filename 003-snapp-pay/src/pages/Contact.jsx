@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/api";
 
 export default function Contact() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,7 +12,9 @@ export default function Contact() {
       setIsLoading(false);
       return result;
     }
-  });
+
+    const result = fetcher();
+  }, []);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -20,7 +22,17 @@ export default function Contact() {
 
   return (
     <>
-      <h1>{user?.name?.first}</h1>
+      <div className=" p-2">
+        <img
+          className="w-[300px] rounded-full"
+          src={user.picture.large}
+          alt="user image"
+        />
+        <h2>
+          {user.name.title}.{user.name.first} {user.name.last}
+        </h2>
+        <span>{user.cell}</span>
+      </div>
     </>
   );
 }
