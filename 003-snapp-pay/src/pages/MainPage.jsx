@@ -20,8 +20,8 @@ export default function MainPage() {
       setUsers(userData);
     }
 
-    const storedHistory = JSON.parse(localStorage.getItem("recentUsers")) || [];
-    setRecentUser(storedHistory);
+    const history = JSON.parse(localStorage.getItem("recentUsers")) || [];
+    setRecentUser(history);
   }, []);
 
   function handleSearchChange(evt) {
@@ -43,7 +43,6 @@ export default function MainPage() {
   }
 
   function handleAddToRecent(user) {
-    debugger;
     setRecentUser((prev) => {
       const updateList = [
         user,
