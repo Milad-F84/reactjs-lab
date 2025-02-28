@@ -6,7 +6,7 @@ export default function UserCard({ userName, imagesObj, cell, onClick }) {
     <div
       className="shadow-lg p-2 rounded-md"
       onClick={() => {
-        // if (onClick) onClick();
+        if (onClick) onClick();
         navigate("contact");
       }}
     >

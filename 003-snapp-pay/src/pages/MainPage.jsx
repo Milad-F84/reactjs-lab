@@ -64,8 +64,8 @@ export default function MainPage() {
         onChange={handleSearchChange}
       />
 
-      <h2>مخاطبین پرتکرار</h2>
-      <div>
+      <h2 className="m-4 font-bold">مخاطبین پرتکرار</h2>
+      <div className="grid grid-cols-4 w-[700px]">
         {recentUser.length > 0 ? (
           recentUser.map((user) => (
             <UserCard
@@ -73,7 +73,7 @@ export default function MainPage() {
               userName={user.name}
               imagesObj={user.picture}
               cell={user.cell}
-              onclick={() => handleAddToRecent(user)}
+              onClick={() => handleAddToRecent(user)}
             />
           ))
         ) : (
@@ -89,7 +89,7 @@ export default function MainPage() {
                 userName={user.name}
                 imagesObj={user.picture}
                 cell={user.cell}
-                onclick={() => handleAddToRecent(user)}
+                onClick={() => handleAddToRecent(user)}
               />
             ))
           : users.map((user) => (
@@ -98,7 +98,7 @@ export default function MainPage() {
                 userName={user.name}
                 imagesObj={user.picture}
                 cell={user.cell}
-                onclick={() => handleAddToRecent(user)}
+                onClick={() => handleAddToRecent(user)}
               />
             ))}
       </div>
