@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import SearchBar from "../components/SearchBar";
 import SingleProductPage from "./SingleProductPage";
 import SingleProduct from "../components/SingleProduct";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
@@ -19,6 +19,7 @@ export default function HomePage() {
   }, []);
 
   function handleProductClick(){
+    debugger;
     navigate("");
   }
 
