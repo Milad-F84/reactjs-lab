@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./layout";
 import HomePage from "./pages/HomePage";
 import CartPage from "./pages/CartPage";
@@ -12,7 +12,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/cart" element={<CartPage />}/>
-            <Route path="/product:id" element={<SingleProductPage />}/>
+            <Route path="/product/:id" element={<SingleProductPage />}/>
           </Routes>
         </BrowserRouter>
       </Layout>
