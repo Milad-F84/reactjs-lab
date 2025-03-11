@@ -6,14 +6,14 @@ import { useContext, useState } from "react";
 import { createContext } from "react";
 import ShoppingCartPage from "./Pages/ShoppingCartPage";
 
-export const Context = createContext(null)
+export const CartContext = createContext(null)
 
 function App() {
   const [cart, setCart] = useState([{ id: 2, quantity: 4 }]);
 
   return (
     <>
-    <Context.Provider value={{cart , setCart}}>
+    <CartContext.Provider value={{cart , setCart}}>
       <Layout>
         <BrowserRouter>
           <Routes>
@@ -26,7 +26,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </Layout>
-      </Context.Provider>
+      </CartContext.Provider>
     </>
   );
 }

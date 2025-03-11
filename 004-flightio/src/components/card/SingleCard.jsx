@@ -2,16 +2,14 @@ import { Box } from "@mui/material";
 import { useContext } from "react";
 import { useMemo, React, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Context } from "../../App";
+import { CartContext } from "../../App";
 import ShoppingIcon from "../ShoppingIcon/ShoppingIcon";
 
-
-export default function SingleCard({ image, title, price, id, icon}) {
+export default function SingleCard({ image, title, price, id, icon }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const test = useContext(Context);
-  const {cart , setCart} = useContext(Context);
-  console.log(test)
+  const test = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
 
   function handleProduct() {
     if (location.pathname === "/product/:id") {
@@ -36,31 +34,33 @@ export default function SingleCard({ image, title, price, id, icon}) {
 
   function add(evt) {
     evt.stopPropagation();
-    setCart(prev => {
-      if (prev.find(item => item.id === id)) {
-        return prev.map(item =>
+    const IsIncluded = cart.find((item) => item.id === id);
+
+    if (IsIncluded) {
+      setCart(
+        cart.map((item) =>
           item.id === id ? { ...item, quantity: item.quantity + 1 } : item
         )
-      } else {
-        return [...prev, { id: id, quantity: 1 }];
-      }
-    })
+      );
+    } else {
+      setCart([...cart, { id, quantity: 1 }]);
+    }
+
+    console.log("cart" , cart)
   }
 
   function remove(evt) {
     evt.stopPropagation();
-    setCart(prev => {
-      if (prev.find(item => item.id === id)) {
-        return prev.map(item =>
+    setCart((prev) => {
+      if (prev.find((item) => item.id === id)) {
+        return prev.map((item) =>
           item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        )
+        );
       } else {
         return [...prev, { id: id, quantity: 1 }];
       }
-    })
+    });
   }
-
-
 
   return (
     <>
@@ -92,10 +92,7 @@ export default function SingleCard({ image, title, price, id, icon}) {
           </button>
           {/* {quantity ? quantity : 0} */}
           {quantity || 0}
-          <button
-            onClick={add}
-            className="bg-green-400 px-2 py-0.5 rounded-md"
-          >
+          <button onClick={add} className="bg-green-400 px-2 py-0.5 rounded-md">
             +
           </button>
         </div>
