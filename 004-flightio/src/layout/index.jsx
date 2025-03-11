@@ -1,12 +1,13 @@
-import BottomNavigationBar from "../components/BottomNavigationBar";
-import Header from "../components/Header";
+import { useState } from "react";
+import Header from "../components/Header/Header";
+import BottomNavigationBar from "../components/Navigation/Navigaton";
 
-export default function Layout({ children }) {
+export default function Layout({ children, cart }) {
   return (
     <>
       <Header />
       {children}
-      <BottomNavigationBar />
+      <BottomNavigationBar cart={cart} />
     </>
   );
 }

@@ -1,42 +1,33 @@
 import { useEffect, useState } from "react";
-import SearchBar from "../components/SearchBar";
-import SingleProductPage from "./SingleProductPage";
-import SingleProduct from "../components/SingleProduct";
+import SingleCard from "../components/card/SingleCard";
 import { useNavigate } from "react-router-dom";
 
-export default function HomePage() {
-  const [products, setProducts] = useState([]);
+export default function HomePage({ cart, setCart }) {
   const navigate = useNavigate();
-
+  const [products, setProduct] = useState([]);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProduct(data));
 
     return () => {
       console.log("home page unmounted");
     };
   }, []);
 
-  function handleProductClick(){
-    debugger;
-    navigate("");
-  }
-
-  return(
+  return (
     <>
-    <SearchBar />
-    {
-        products.map((item) => (
-            <SingleProduct 
-            onclick={handleProductClick}
+        {products.map((item) => (
+          <SingleCard
+            id={item.id}
             key={item.id}
+            cart={cart}
+            setCart={setCart}
             title={item.title}
             price={item.price}
             image={item.image}
-            />
-        ))
-    }
+          />
+        ))}
     </>
-  )
+  );
 }

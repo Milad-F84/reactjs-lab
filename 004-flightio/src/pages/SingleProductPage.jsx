@@ -1,9 +1,11 @@
+import { useNavigate, useParams } from "react-router-dom";
+import SingleCard from "../components/card/SingleCard";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import SingleProduct from "../components/SingleProduct";
+import ShoppingIcon from "../components/ShoppingIcon/ShoppingIcon";
 
 export default function SingleProductPage() {
   const params = useParams();
+  const navigate = useNavigate();
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {
@@ -13,14 +15,28 @@ export default function SingleProductPage() {
   }, []);
 
   if (!productData) {
-    return <h1>Loiding...</h1>;
+    return <h1>loading</h1>;
+  }
+
+  function handleShopping({ product }) {
+    // let cart = JSON.parse(localStorage.getItem("shopping")) || [];
+    // if(!Array.isArray(cart)){
+    //   cart=[];
+    // }
+    // cart.push(product)
+    // localStorage.setItem("Shopping",JSON.stringify(cart))
+    // console.log(cart)
+    navigate(`/shopping/${productData.id}`, { state: {} });
   }
 
   return (
-    <SingleProduct
-      image={productData?.image}
-      title={productData?.title}
-      price={productData?.price}
-    />
+    <>
+      <SingleCard
+        image={productData?.image}
+        title={productData?.title}
+        price={productData?.price}
+        icon={<ShoppingIcon onClick={handleShopping} />}
+      />
+    </>
   );
 }

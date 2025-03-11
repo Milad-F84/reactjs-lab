@@ -2,21 +2,18 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { useState } from "react";
+import ShoppingIcon from "../ShoppingIcon/ShoppingIcon";
 
-export default function BottomNavigationBar() {
-  const [value, setValue] = useState(1);
-
+export default function BottomNavigationBar({ cart }) {
   return (
-    <BottomNavigation
-      showLabels
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-    >
+    <BottomNavigation className="fixed bottom-0 left-0 w-full">
       <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+      <div className="relative">
+        <span className="absolute top-0 right-0 bg-red-300 rounded-full">
+          {cart?.length || 0}
+        </span>
+        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+      </div>
       <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
     </BottomNavigation>
   );
