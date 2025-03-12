@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    <CartContext.Provider value={{cart , setCart}}>
+    <CartContext.Provider value={{cart:cart , setCart:setCart}}>
       <Layout>
         <BrowserRouter>
           <Routes>

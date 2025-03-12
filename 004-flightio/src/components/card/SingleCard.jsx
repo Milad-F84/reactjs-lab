@@ -46,20 +46,21 @@ export default function SingleCard({ image, title, price, id, icon }) {
       setCart([...cart, { id, quantity: 1 }]);
     }
 
-    console.log("cart" , cart)
+    console.log("cart", cart);
   }
 
   function remove(evt) {
-    evt.stopPropagation();
-    setCart((prev) => {
-      if (prev.find((item) => item.id === id)) {
-        return prev.map((item) =>
+    if (!quantity) return;
+
+    if (quantity > 1) {
+      setCart(
+        cart.map((item) =>
           item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        );
-      } else {
-        return [...prev, { id: id, quantity: 1 }];
-      }
-    });
+        )
+      );
+    }else{
+      setCart(cart.filter((item) => item.id != id))
+    }
   }
 
   return (
@@ -85,13 +86,16 @@ export default function SingleCard({ image, title, price, id, icon }) {
         </Box>
         <div className="flex gap-1">
           <button
-            onClick={remove}
+            onClick={(evt) => {
+              evt.stopPropagation();
+              if (quantity) remove();
+            }}
             className="bg-red-400 px-2 py-0.5 rounded-md"
           >
             -
           </button>
           {/* {quantity ? quantity : 0} */}
-          {quantity || 0}
+          {quantity || "اضافه نشده"}
           <button onClick={add} className="bg-green-400 px-2 py-0.5 rounded-md">
             +
           </button>
