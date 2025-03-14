@@ -69,22 +69,24 @@ export default function SingleCard({ image, title, price, id, icon }) {
         onClick={handleProduct}
         component="div"
         width="20rem"
-        margin="5rem auto"
+        margin="3rem auto"
         boxShadow="0px 0px 10px 10px rgba(0,0,0,0.2)"
         padding="1.5rem"
         borderRadius="1rem"
+        className="w-[20rem] mx-auto p-6 rounded-2xl shadow-lg bg-white transition hover:shadow-2xl"
       >
-        <img src={image} alt="image" width="full" />
-        <h2 className="mb-[1rem] font-bold mt-[3rem]">{title}</h2>
+        <img className="rounded-xl w-full mb-4 aspect-square object-cover" src={image} alt="image" width="full" />
+        <h2 className="mb-[1rem] font-bold mt-[3rem] line-clamp-1">{title}</h2>
         <Box
           component="div"
           marginTop="1rem"
           display="flex"
           justifyContent="space-between"
+          className="mt-4"
         >
-          <span>${price}</span>
+          <span className="flex justify-between items-center mb-2">${price}</span>
         </Box>
-        <div className="flex gap-1">
+        <div className="flex items-center justify-between mt-4">
           <button
             onClick={(evt) => {
               evt.stopPropagation();
@@ -92,12 +94,12 @@ export default function SingleCard({ image, title, price, id, icon }) {
             }}
             className="bg-red-400 px-2 py-0.5 rounded-md"
           >
-            -
+            حذف
           </button>
           {/* {quantity ? quantity : 0} */}
           {quantity || "اضافه نشده"}
           <button onClick={add} className="bg-green-400 px-2 py-0.5 rounded-md">
-            +
+            اضافه
           </button>
         </div>
       </Box>

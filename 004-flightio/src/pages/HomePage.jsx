@@ -17,6 +17,7 @@ export default function HomePage({ cart, setCart }) {
 
   return (
     <>
+      <div className="w-full max-w-7xl mx-auto p-4 flex flex-wrap justify-center gap-6">
         {products.map((item) => (
           <SingleCard
             id={item.id}
@@ -28,6 +29,7 @@ export default function HomePage({ cart, setCart }) {
             image={item.image}
           />
         ))}
+      </div>
     </>
   );
 }
